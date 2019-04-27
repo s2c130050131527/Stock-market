@@ -4,16 +4,18 @@
  * Module dependencies.
  */
 
-import { App } from '../app';
+import { config } from 'dotenv';
+config();
 import debugLog from 'debug';
 import http from 'http';
-import dotenv from 'dotenv';
-dotenv.config();
+import { initApp } from '../app';
 
 const debug = debugLog('backend:server');
 /**
  * Get port from environment and store in Express.
  */
+
+const App = initApp();
 
 var port = normalizePort(process.env.PORT || '3000');
 App.set('port', port);
