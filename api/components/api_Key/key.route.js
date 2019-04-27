@@ -1,4 +1,4 @@
-import KeyController from './auth.controller';
+import KeyController from './key.controller';
 
 class KeyRoutes {
 	constructor(router) {
@@ -12,6 +12,7 @@ class KeyRoutes {
 
 	validateCreate(req, res, next) {
 		const permissions = req.body.permissions;
+		console.log(req.body);
 		if (Array.isArray(permissions)) {
 			const inValid = [];
 			permissions.forEach(el => {
@@ -26,6 +27,10 @@ class KeyRoutes {
 			}
 			next();
 		} else {
+			if (permissions === '*') {
+				req.body.permissions = process.env.API_LIST;
+				next();
+			}
 			res.status(400).json({
 				message: 'Permissions Should be in Array',
 			});
