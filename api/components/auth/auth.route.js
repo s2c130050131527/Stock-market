@@ -17,9 +17,17 @@ class AuthRoutes {
 				scope: ['email', 'profile'],
 			})
 		);
+		this.router.get('/login/facebook', Passport.authenticate('facebook'));
 		this.router.get(
 			'/callback',
 			Passport.authenticate('google', {
+				session: false,
+			}),
+			AuthController.callback
+		);
+		this.router.get(
+			'/callback/facebook',
+			Passport.authenticate('facebook', {
 				session: false,
 			}),
 			AuthController.callback
