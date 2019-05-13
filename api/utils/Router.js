@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import KeyRoutes from '../components/api_Key/key.route';
 import DataRoutes from '../components/data/data.route';
+import AuthRoutes from '../components/auth/auth.route.js';
 
 class AppRouter {
 	constructor(app) {
@@ -10,7 +11,7 @@ class AppRouter {
 	}
 
 	initRoutes() {
-		// new AuthRoutes(this.router);
+		new AuthRoutes(this.router);
 		new KeyRoutes(this.router);
 		new DataRoutes(this.router);
 	}

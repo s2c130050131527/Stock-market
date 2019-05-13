@@ -16,8 +16,8 @@ export const initApp = () => {
 	app.use(json());
 	app.use(urlencoded({ extended: false }));
 	app.use(cookieParser());
-	// init();
-	// app.use(passport.initialize());
+	init();
+	app.use(passport.initialize());
 	new AppRouter(app);
 	new DB().initDB();
 	return app;
