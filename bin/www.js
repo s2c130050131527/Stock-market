@@ -30,7 +30,7 @@ var server = http.createServer(App);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, '172.31.40.244');
 server.on('error', onError);
 server.on('listening', onListening);
 
